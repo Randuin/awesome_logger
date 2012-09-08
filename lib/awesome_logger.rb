@@ -1,7 +1,11 @@
 require "awesome_logger/version"
+require "awesome_logger/formatters/console"
 require 'json'
 
 class AwesomeLogger
+  extend Formatters::Console::ClassMethods
+  include Formatters::Console
+
   LOGGER_LEVELS = [ :fatal, :error, :warn, :info, :debug ]
 
   attr_accessor :logs
@@ -24,7 +28,7 @@ class AwesomeLogger
     end
   end
 
-  alias << log
+  alias_method :<<, :log
 
   def to_json
     @logs.to_json
