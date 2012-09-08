@@ -28,11 +28,7 @@ class AwesomeLogger
     end
   end
 
-  def logs
-    @logs
-  end
-
-  def json_logs
+  def to_json
     @logs.to_json
   end
 end
