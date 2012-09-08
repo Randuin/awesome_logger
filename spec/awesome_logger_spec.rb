@@ -10,6 +10,11 @@ describe AwesomeLogger do
     @logger.logs.should be_a Array
   end
 
+  it 'should set the formatter correctly' do
+    @logger.formatter = :console
+    @logger.formatter.should be AwesomeLogger::Console
+  end
+
   it 'should have proper logger api methods' do
     @logger.should respond_to :warn
     @logger.should respond_to :fatal
@@ -39,5 +44,15 @@ describe AwesomeLogger do
     @logger << new_logger
 
     @logger.logs.last[:message].should eq 'another message'
+  end
+
+  it "should grab the correct formatter module via symbol" do
+    formatter = AwesomeLogger.get_formatter_by_symbol :json
+    formatter.should be AwesomeLogger::Json
+  end
+
+  it "should return nil when it cannot find the formatter" do
+    formatter = AwesomeLogger.get_formatter_by_symbol :blah
+    formatter.should be nil
   end
 end
