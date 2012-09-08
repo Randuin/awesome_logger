@@ -35,7 +35,8 @@ class AwesomeLogger
 
   alias_method :<<, :log
 
-  def flush_to_logger logger, formatter
+  def flush_to_logger logger
+    @formatter.flush_to_logger logger, @logs
   end
 
   def output
