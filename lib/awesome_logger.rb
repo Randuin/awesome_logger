@@ -17,16 +17,14 @@ class AwesomeLogger
   end
 
   def log(msg, level = :info)
-    @logs << { :time => Time.now, :message => msg, :level => level }
-  end
-
-  def <<(msg)
     if msg.is_a?(AwesomeLogger)
       @logs += msg.logs
     else
-      log(msg)
+      @logs << { :time => Time.now, :message => msg, :level => level }
     end
   end
+
+  alias << log
 
   def to_json
     @logs.to_json
