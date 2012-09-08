@@ -9,11 +9,11 @@ class AwesomeLogger
 
 
       def self.colorize text, color_code
-        "#{color_code}#{text}e[0m"
+        "#{color_code}#{text}\e[0m"
       end
 
-      def self.red text; colorize text, "e[31m"; end
-      def self.green text; colorize text, "e[32m"; end
+      def self.red text; colorize text, "\e[31m"; end
+      def self.green text; colorize text, "\e[32m"; end
     end
   end
 end

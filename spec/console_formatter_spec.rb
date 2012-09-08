@@ -8,12 +8,12 @@ describe AwesomeLogger::Formatters::Console do
 
   it 'should always reset colorized text' do
     @logger.log AwesomeLogger::Formatters::Console.red "hi"
-    @logger.logs.last[:message].should match /e\[0m$/
+    @logger.logs.last[:message].should match /\e\[0m$/
   end
 
   it 'should prepend the correct color code' do
     @logger.log AwesomeLogger::Formatters::Console.red "hi"
-    @logger.logs.last[:message].should match /^e\[31m/
+    @logger.logs.last[:message].should match /^\e\[31m/
   end
 
   it 'should output to the console properly' do
